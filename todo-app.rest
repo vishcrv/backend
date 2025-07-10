@@ -1,0 +1,61 @@
+@token = paste-your-jwt-token-here
+
+### GET /
+GET http://localhost:5006
+
+### Register a user POST /AUTH/REGISTER
+POST http://localhost:5006/auth/register
+Content-Type: application/json
+
+{
+    "username": "vishnuvenkat06@gmail.com",
+    "password": "123123123"
+}
+
+### Login a user POST /AUTH/LOGIN
+POST http://localhost:5006/auth/login
+Content-Type: application/json
+
+{
+    "username": "vishnuvenkat06@gmail.com",
+    "password": "123123123"
+}
+
+### Fetch all todos GET /TODOS (protected)
+GET http://localhost:5006/todos
+Authorization: {{token}}
+
+### Creates a new todo POST /TODOS (protected)
+POST http://localhost:5006/todos
+Authorization: {{token}}
+Content-Type: application/json 
+
+{
+    "task": "Finish mcp crash course"
+}
+
+### Update a todo PUT /TODOS/:ID (protected)
+PUT http://localhost:5006/todos/2?page=4
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### Delete a todo DELETE /TODOS/:ID (protected)
+DELETE http://localhost:5006/todos/1
+Authorization: {{token}}
+
+### Get a single todo by ID (protected)
+GET http://localhost:5006/todos/2
+Authorization: {{token}}
+
+### Mark all todos as complete (custom example, not implemented)
+PUT http://localhost:5006/todos/complete-all
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "completed": 1
+}
